@@ -3,9 +3,6 @@ name: Qt Build
 on:
   push:
     branches: [ "master" ]
-    paths:
-      - "**.cpp"
-      - "**.h"
   pull_request:
     branches: [ "master" ]
 
