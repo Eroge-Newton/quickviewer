@@ -20,6 +20,7 @@ jobs:
     - name: Set up Qt environment
       run: |
         sudo apt-get update
+        sudo apt install tree
         sudo apt-get install -y qt5-qmake qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5svg5-dev libqt5sql5-sqlite libqt5webkit5-dev libgl1-mesa-dev libxml2-utils mesa-common-dev
 
         export PATH="/usr/lib/x86_64-linux-gnu/qt5/bin:$PATH"
@@ -28,7 +29,7 @@ jobs:
     - name: Build project
       run: |
         #cd ..
-        pwd
+        pwd && tree
         mkdir build && cd build 
         #[QTSDK]/bin/qmake -o Makefile -recursive ../quickviewer/QVProject.pro
         #qmake -o Makefile -recursive ../quickviewer/QVProject.pro
