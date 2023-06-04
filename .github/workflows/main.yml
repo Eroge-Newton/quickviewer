@@ -30,7 +30,8 @@ jobs:
         cd .. 
         mkdir build 
         cd build 
-        [QTSDK]/bin/qmake -o Makefile -recursive ../quickviewer/QVProject.pro
+        #[QTSDK]/bin/qmake -o Makefile -recursive ../quickviewer/QVProject.pro
+        qmake -o Makefile -recursive ../quickviewer/QVProject.pro
         cd && ls -ash
         #qmake
         #make -j$(nproc)
