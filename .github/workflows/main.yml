@@ -2,14 +2,12 @@ name: Qt Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "master" ]
     paths:
       - "**.cpp"
       - "**.h"
   pull_request:
-    branches:
-      - main
+    branches: [ "master" ]
 
 jobs:
   build:
