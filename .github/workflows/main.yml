@@ -1,0 +1,41 @@
+name: Qt Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.cpp"
+      - "**.h"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Qt environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y qt5-qmake qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5svg5-dev libqt5sql5-sqlite libqt5webkit5-dev libgl1-mesa-dev libxml2-utils mesa-common-dev
+
+        export PATH="/usr/lib/x86_64-linux-gnu/qt5/bin:$PATH"
+        qmake --version
+
+    - name: Build project
+      run: |
+        qmake
+        make -j$(nproc)
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: binaries
+        path: |
+          MyQtApp
+          MyQtApp.desktop
