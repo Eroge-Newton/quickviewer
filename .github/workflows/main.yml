@@ -27,8 +27,8 @@ jobs:
 
     - name: Build project
       run: |
+        cd ..
         pwd
-        cd ../
         mkdir build 
         cd build 
         #[QTSDK]/bin/qmake -o Makefile -recursive ../quickviewer/QVProject.pro
